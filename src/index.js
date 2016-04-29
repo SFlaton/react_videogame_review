@@ -6,6 +6,8 @@ import Categories from './Categories';
 import Category from './Category';
 import Games from './Games';
 import Game from './Game';
+import Reviews from './Reviews';
+import Review from './Review';
 import PageNotFound from './PageNotFound';
 
 ReactDOM.render((
@@ -14,7 +16,10 @@ ReactDOM.render((
       <IndexRoute component={Categories} />
       <Route path="/categories/:categoryId" component={Category}>
         <IndexRoute component={Games} />
-        <Route path="games/:gameId" component={Game} />
+        <Route path="games/:gameId" component={Game}>
+          <IndexRoute component={Reviews} />
+          <Route path="reviews/:reviewId" component={Review} />
+        </Route>
       </Route>
       <Route path="*" component={PageNotFound}/>
     </Route>
