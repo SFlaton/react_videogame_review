@@ -15,7 +15,7 @@ class Game extends React.Component {
 
   getGame() {
     let component = this;
-    let url = "https://guarded-fjord-30628.herokuapp.com/categories/"+ this.props.params.categoryId +"/games" + this.props.params.gameId + ".json";
+    let url = "https://guarded-fjord-30628.herokuapp.com/categories/"+ this.props.params.categoryId +"/games/" + this.props.params.gameId + ".json";
     jQuery.getJSON(url, function(data) {
       component.setState({
         game: data.game
@@ -25,9 +25,11 @@ class Game extends React.Component {
 
   render() {
     return (
-      <h1>Game:{this.state.game.title}</h1>
-      
-
+      <div className="container">
+        <h1>Game: {this.state.game.title}</h1>
+        <p>ID: {this.props.params.gameId}</p>
+        {this.props.children}
+      </div>
     );
   }
 }
